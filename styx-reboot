@@ -1,0 +1,29 @@
+#!/bin/bash
+
+source /usr/local/bin/styx/lib/styx-functions
+
+STYXGROUP=$(id -g $(whoami))
+
+if   [ $STYXGROUP = "501" ]; then
+
+        fg_login
+
+elif [ $STYXGROUP = "502" ]; then
+
+        ts_login
+
+elif [ $STYXGROUP = "503" ]; then
+
+        ks_login
+
+elif [ $STYXGROUP = "504" ]; then
+
+        tv_login
+
+elif [ $STYXGROUP = "505" ]; then
+
+        sd_login
+
+else echo "Group not does exit";
+
+fi

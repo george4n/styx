@@ -1,0 +1,18 @@
+#!/bin/bash
+
+source /usr/local/bin/styx/lib/styx-functions
+
+function ts_login {
+
+	ts_set_wallpaper
+	ts_set_launcher
+	ts_start_apps
+	ts_notify_login
+	global_start_timeout
+	global_welcome_user
+
+	exit 0
+
+}
+
+

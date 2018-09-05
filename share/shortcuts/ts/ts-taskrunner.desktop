@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=False
+Exec=styx-taskrunner
+Name=Telesales Task Runner
+Comment=Televinken Control Center
+Icon=/usr/share/icons/Humanity/apps/48/checkbox.svg
+
