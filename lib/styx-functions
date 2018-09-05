@@ -65,28 +65,36 @@ fi
 
 }
 
-#################### APP 
+### APP ################################################################################### 
 
 function global_start_apps {
 
 if   [ $STYXGROUP = "501" ]; then
-        fg_login
+	echo "-> Starting up apps for group $STYXGROUP"
+        google-chrome &
+        echo "-> App startup complete!"
 elif [ $STYXGROUP = "502" ]; then
 	echo "-> Starting up apps for group $STYXGROUP"
         google-chrome &
         echo "-> App startup complete!"
 elif [ $STYXGROUP = "503" ]; then
-        ks_login
+	echo "-> Starting up apps for group $STYXGROUP"
+        google-chrome &
+        echo "-> App startup complete!"
 elif [ $STYXGROUP = "504" ]; then
-        tv_login
+	echo "-> Starting up apps for group $STYXGROUP"
+        google-chrome &
+        echo "-> App startup complete!"
 elif [ $STYXGROUP = "505" ]; then
-        sd_login
+	echo "-> Starting up apps for group $STYXGROUP"
+        google-chrome &
+        echo "-> App startup complete!"
 else echo "Group not does exit";
 fi
 
 }
 
-#################### SLACK NOTIFY
+### SLACK NOTIFY ###########################################################################
 
 function global_notify_login {
 
