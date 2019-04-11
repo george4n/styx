@@ -95,7 +95,7 @@ fi
 }
 
 
-function control_center_3telesales {
+function ts_taskrunner {
 
 CHOICE=$(zenity --height=400 --width=360 --list \
    --title="Televinken Control Center" \

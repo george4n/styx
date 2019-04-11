@@ -217,3 +217,36 @@ function ts_login {
 	global_welcome_user
 	exit 0
 }
+
+########################## TASKRUNNER
+
+function ts_taskrunner {
+
+CHOICE=$(zenity --height=400 --width=360 --list \
+   --title="Telesales Taskrunner" \
+   --column="Task" --column="Description" \
+   "1" "Logout Session" \
+   "2" "Restart Bria" \
+   "3" "Restore Bria Settings" \
+   "4" "Refresh Logon Process" \
+   "5" "Kill Remote" \
+   "6" "Remote Legacy" \
+   "7" "Refresh Sound System" \
+   "8" "Download Remote Settings" \
+   "9" "Remote Temp" \
+   "10" "Headset Keepalive" \
+)
+
+if [[ $CHOICE = "1" ]]; then tvcc-3kundservice-logout &
+elif [[ $CHOICE = "2" ]]; then fixbria &
+elif [[ $CHOICE = "3" ]]; then restore_bria &
+elif [[ $CHOICE = "4" ]]; then tvcc-3kundservice-logon &
+elif [[ $CHOICE = "5" ]]; then killall rdesktop &
+elif [[ $CHOICE = "6" ]]; then /mnt/.system/kundservice/admin/server/./remote-legacy.sh &
+elif [[ $CHOICE = "7" ]]; then /mnt/.system/kundservice/admin/server/./fixpulse.sh &
+elif [[ $CHOICE = "8" ]]; then /mnt/.system/kundservice/admin/server/./remote-settings.sh &
+elif [[ $CHOICE = "9" ]]; then /mnt/.system/kundservice/admin/server/./remote-temp.sh &
+elif [[ $CHOICE = "10" ]]; then gnome-terminal -e 'tvcc-click'
+fi
+
+}
