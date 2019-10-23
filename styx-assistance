@@ -2,16 +2,17 @@
 
 source /usr/local/bin/styx/lib/styx-functions
 
-STYXGROUP=$(id -g $(whoami))
-if   [ $STYXGROUP = "501" ]; then
+STYXGROUP=$(id -nG)
+if   [[ "$STYXGROUP" == *"foretag"* ]]; then
   fg_assistance
-elif [ $STYXGROUP = "502" ]; then
+elif [[ "$STYXGROUP" == *"telesales"* ]]; then
   ts_assistance
-elif [ $STYXGROUP = "503" ]; then
+elif [[ "$STYXGROUP" == *"kundservice"* ]]; then
   ks_assistance
-elif [ $STYXGROUP = "504" ]; then
+elif [[ "$STYXGROUP" == *"televinken"* ]]; then
   tv_assistance
-elif [ $STYXGROUP = "505" ]; then
+elif [[ "$STYXGROUP" == *"savedesk"* ]]; then
   sd_assistance
 else echo "Group not does exist";
 fi
+echo $USER
