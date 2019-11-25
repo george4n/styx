@@ -3,16 +3,14 @@
 source /usr/local/bin/styx/lib/styx-functions
 
 STYXGROUP=$(id -nG)
-if   [[ "$STYXGROUP" == *"foretag"* ]]; then
-  fg_assistance
-elif [[ "$STYXGROUP" == *"telesales"* ]]; then
-  ts_assistance
-elif [[ "$STYXGROUP" == *"kundservice"* ]]; then
-  ks_assistance
-elif [[ "$STYXGROUP" == *"televinken"* ]]; then
+if   [[ "$STYXGROUP" == *"televinken"* ]]; then
   tv_assistance
-elif [[ "$STYXGROUP" == *"savedesk"* ]]; then
-  sd_assistance
+elif [[ "$STYXGROUP" == *"kundservice"* ]]; then
+  3ks_assistance
+elif [[ "$STYXGROUP" == *"telesales"* ]]; then
+  3ts_assistance
+elif [[ "$STYXGROUP" == *"solsidan"* ]]; then
+  3sd_assistance
 else echo "Group not does exist";
 fi
 echo $USER

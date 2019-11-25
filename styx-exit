@@ -2,16 +2,15 @@
 
 source /usr/local/bin/styx/lib/styx-functions
 
-STYXGROUP=$(id -g $(whoami))
-if   [ $STYXGROUP = "501" ]; then
-  fg_exit
-elif [ $STYXGROUP = "502" ]; then
-  ts_exit
-elif [ $STYXGROUP = "503" ]; then
-  ks_exit
-elif [ $STYXGROUP = "504" ]; then
+STYXGROUP=$(id -nG)
+if   [[ "$STYXGROUP" == *"televinken"* ]]; then
   tv_exit
-elif [ $STYXGROUP = "505" ]; then
-  sd_exit
+elif [[ "$STYXGROUP" == *"kundservice"* ]]; then
+  3ks_exit
+elif [[ "$STYXGROUP" == *"telesales"* ]]; then
+  3ts_exit
+elif [[ "$STYXGROUP" == *"solsidan"* ]]; then
+  3sd_exit
 else echo "Group not does exist";
 fi
+echo $USER
