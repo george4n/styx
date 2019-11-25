@@ -136,7 +136,7 @@ function global_assistance {
 	fi
 }
 
-function ts_assistance {
+function tv_assistance {
 	zenity \
 	--question \
 	--title "Request for Assistance" \
@@ -208,7 +208,37 @@ function global_vbox_save {
 	done
 }
 
-function ts_login {
+function tv_login {
+	global_set_wallpaper
+	global_set_launcher
+	global_start_apps
+	global_notify_login
+	global_start_timeout
+	global_welcome_user
+	exit 0
+}
+
+function 3ks_login {
+	global_set_wallpaper
+	global_set_launcher
+	global_start_apps
+	global_notify_login
+	global_start_timeout
+	global_welcome_user
+	exit 0
+}
+
+function 3ts_login {
+	global_set_wallpaper
+	global_set_launcher
+	global_start_apps
+	global_notify_login
+	global_start_timeout
+	global_welcome_user
+	exit 0
+}
+
+function 3sd_login {
 	global_set_wallpaper
 	global_set_launcher
 	global_start_apps
