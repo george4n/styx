@@ -143,7 +143,7 @@ function global_start_timeout {
 	until date | fgrep -q "01:00:"; do
 		sleep 1
 	done
-	tvcc-3telesales-force-logout
+	styx-exit
 }
 
 #################### ASSISTANCE
