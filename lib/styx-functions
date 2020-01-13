@@ -80,19 +80,19 @@ echo "-> Wallpaper set!"
 function global_set_launcher {
 	echo "-> Setting launcher for group $STYXGROUP..."
 if   [ $STYXGROUP = "televinken" ]; then
-	cp -r /usr/local/bin/styx/share/shortcuts/fg/* ~/.local/share/applications/
-	gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'google-chrome.desktop', 'fg-assistance.desktop', 'fg-taskrunner.desktop', 'fg-exit.desktop', 'fg-reboot.desktop', 'xpad.desktop']"
-elif [ $STYXGROUP = "kundservice" ]; then
-	cp -r /usr/local/bin/styx/share/shortcuts/ts/* ~/.local/share/applications/
-	gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'google-chrome.desktop', 'gnome-todo.desktop', 'ts-assistance.desktop', 'ts-taskrunner.desktop', 'ts-exit.desktop', 'ts-reboot.desktop', 'xpad.desktop']"
-elif [ $STYXGROUP = "telesales" ]; then
-	cp -r /usr/local/bin/styx/share/shortcuts/ks/* ~/.local/share/applications/
-  gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'google-chrome.desktop', 'ks-assistance.desktop', 'ks-taskrunner.desktop', 'ks-exit.desktop', 'ks-reboot.desktop', 'xpad.desktop']"
-elif [ $STYXGROUP = "solsidan" ]; then
 	cp -r /usr/local/bin/styx/share/shortcuts/tv/* ~/.local/share/applications/
-  gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'google-chrome.desktop', 'tv-assistance.desktop', 'tv-taskrunner.desktop', 'tv-exit.desktop', 'tv-reboot.desktop', 'xpad.desktop']"
+	gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'google-chrome.desktop', 'tv-assistance.desktop', 'tv-taskrunner.desktop', 'tv-exit.desktop', 'tv-reboot.desktop', 'xpad.desktop']"
+elif [ $STYXGROUP = "kundservice" ]; then
+	cp -r /usr/local/bin/styx/share/shortcuts/ks/* ~/.local/share/applications/
+	gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'google-chrome.desktop', 'gnome-todo.desktop', 'ks-assistance.desktop', 'ks-taskrunner.desktop', 'ks-exit.desktop', 'ks-reboot.desktop', 'xpad.desktop']"
+elif [ $STYXGROUP = "telesales" ]; then
+	cp -r /usr/local/bin/styx/share/shortcuts/ts/* ~/.local/share/applications/
+  gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'google-chrome.desktop', 'ts-assistance.desktop', 'ts-taskrunner.desktop', 'ts-exit.desktop', 'ts-reboot.desktop', 'xpad.desktop']"
+elif [ $STYXGROUP = "solsidan" ]; then
+	cp -r /usr/local/bin/styx/share/shortcuts/sd/* ~/.local/share/applications/
+  gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'google-chrome.desktop', 'sd-assistance.desktop', 'sd-taskrunner.desktop', 'sd-exit.desktop', 'sd-reboot.desktop', 'xpad.desktop']"
 
-else echo "Group not does exist, cannot set background";
+else echo "Group not does exist, cannot set launcher";
 fi
 echo "-> Launcher set!"
 
