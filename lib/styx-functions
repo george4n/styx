@@ -1,5 +1,58 @@
 #!/bin/bash
 
+#FUNCTIONS AVAILABLE
+
+# global_welcome_user - sends user a welcome message
+# global_set_wallpaper - sets the wallpaper at login
+# global_set_launcher - sets the launcher icons at login
+# global_start_apps - starts the most commonly used apps at login
+# global_notify_login - sends a login notification to chat server
+# global_start_timeout - creates a timer to auto logout user at specified time
+# global_assistance - launches the assistance utility
+
+
+# 3ts_start_remote - obsolete
+# global_start_slack - 
+# global_start_chrome - 
+# global_start_vbox - 
+# global_start_timeout - 
+
+# tv_login
+#	global_set_wallpaper
+#	global_set_launcher
+#	global_start_apps
+#	global_notify_login
+#	global_start_timeout
+#	global_welcome_user
+
+
+# 3ks_login
+#	global_set_wallpaper
+#	global_set_launcher
+#	global_start_apps
+#	global_notify_login
+#	global_start_timeout
+#	global_welcome_user
+
+# 3ts_login
+#	global_set_wallpaper
+#	global_set_launcher
+#	global_start_apps
+#	global_notify_login
+#	global_start_timeout
+#	global_welcome_user
+
+
+# 3sd_login
+#	global_set_wallpaper
+#	global_set_launcher
+#	global_start_apps
+#	global_notify_login
+#	global_start_timeout
+#	global_welcome_user
+
+
+# get the user's name and display welcome message
 function global_welcome_user {
 	PERSON=`getent passwd $USER | cut -d ':' -f 5 | cut -d ',' -f 1`
 	zenity --info --text "Welcome, $PERSON. System is ready!" --timeout 5 --width=30 --width=350 --title "System Status"
@@ -9,16 +62,14 @@ function global_welcome_user {
 
 function global_set_wallpaper {
 	echo "-> Setting wallpaper for group $STYXGROUP..."
-	if   [ $STYXGROUP = "501" ]; then
-		gsettings set org.gnome.desktop.background picture-uri 'file:///usr/local/bin/styx/share/wallpapers/fg/3bg.jpg'
-	elif [ $STYXGROUP = "502" ]; then
-		gsettings set org.gnome.desktop.background picture-uri 'file:///usr/local/bin/styx/share/wallpapers/ts/3bg.jpg'
-	elif [ $STYXGROUP = "503" ]; then
-		gsettings set org.gnome.desktop.background picture-uri 'file:///usr/local/bin/styx/share/wallpapers/ks/3bg.jpg'
-	elif [ $STYXGROUP = "504" ]; then
-		gsettings set org.gnome.desktop.background picture-uri 'file:///usr/local/bin/styx/share/wallpapers/tv/3logo.jpg'
-	elif [ $STYXGROUP = "505" ]; then
-		gsettings set org.gnome.desktop.background picture-uri 'file:///usr/local/bin/styx/share/wallpapers/sd/3bg.jpg'
+	if   [ $STYXGROUP = "televinken" ]; then
+		gsettings set org.gnome.desktop.background picture-uri 'file:///usr/share/backgrounds/Beaver_Wallpaper_Grey_4096x2304.png'
+	elif [ $STYXGROUP = "kundservice" ]; then
+		gsettings set org.gnome.desktop.background picture-uri 'file:///usr/share/backgrounds/Beaver_Wallpaper_Grey_4096x2304.png'
+	elif [ $STYXGROUP = "telesales" ]; then
+		gsettings set org.gnome.desktop.background picture-uri 'file:///usr/share/backgrounds/Beaver_Wallpaper_Grey_4096x2304.png'
+	elif [ $STYXGROUP = "solsidan" ]; then
+		gsettings set org.gnome.desktop.background picture-uri 'file:///usr/share/backgrounds/Beaver_Wallpaper_Grey_4096x2304.png'
 	else echo "Group not does exist, cannot set background";
 fi
 echo "-> Wallpaper set!"
@@ -28,21 +79,19 @@ echo "-> Wallpaper set!"
 
 function global_set_launcher {
 	echo "-> Setting launcher for group $STYXGROUP..."
-if   [ $STYXGROUP = "501" ]; then
+if   [ $STYXGROUP = "televinken" ]; then
 	cp -r /usr/local/bin/styx/share/shortcuts/fg/* ~/.local/share/applications/
 	gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'google-chrome.desktop', 'fg-assistance.desktop', 'fg-taskrunner.desktop', 'fg-exit.desktop', 'fg-reboot.desktop', 'xpad.desktop']"
-elif [ $STYXGROUP = "502" ]; then
+elif [ $STYXGROUP = "kundservice" ]; then
 	cp -r /usr/local/bin/styx/share/shortcuts/ts/* ~/.local/share/applications/
 	gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'google-chrome.desktop', 'gnome-todo.desktop', 'ts-assistance.desktop', 'ts-taskrunner.desktop', 'ts-exit.desktop', 'ts-reboot.desktop', 'xpad.desktop']"
-elif [ $STYXGROUP = "503" ]; then
+elif [ $STYXGROUP = "telesales" ]; then
 	cp -r /usr/local/bin/styx/share/shortcuts/ks/* ~/.local/share/applications/
   gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'google-chrome.desktop', 'ks-assistance.desktop', 'ks-taskrunner.desktop', 'ks-exit.desktop', 'ks-reboot.desktop', 'xpad.desktop']"
-elif [ $STYXGROUP = "504" ]; then
+elif [ $STYXGROUP = "solsidan" ]; then
 	cp -r /usr/local/bin/styx/share/shortcuts/tv/* ~/.local/share/applications/
   gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'google-chrome.desktop', 'tv-assistance.desktop', 'tv-taskrunner.desktop', 'tv-exit.desktop', 'tv-reboot.desktop', 'xpad.desktop']"
-elif [ $STYXGROUP = "505" ]; then
-  cp -r /usr/local/bin/styx/share/shortcuts/sd/* ~/.local/share/applications/
-  gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'google-chrome.desktop', 'sd-assistance.desktop', 'sd-taskrunner.desktop', 'sd-exit.desktop', 'sd-reboot.desktop', 'xpad.desktop']"
+
 else echo "Group not does exist, cannot set background";
 fi
 echo "-> Launcher set!"
@@ -52,23 +101,19 @@ echo "-> Launcher set!"
 ### APP ###################################################################################
 
 function global_start_apps {
-	if   [ $STYXGROUP = "501" ]; then
+	if   [ $STYXGROUP = "televinken" ]; then
 		echo "-> Starting up apps for group $STYXGROUP"
 		google-chrome &
 		echo "-> App startup complete!"
-	elif [ $STYXGROUP = "502" ]; then
+	elif [ $STYXGROUP = "kundservice" ]; then
 		echo "-> Starting up apps for group $STYXGROUP"
 		google-chrome &
 		echo "-> App startup complete!"
-	elif [ $STYXGROUP = "503" ]; then
+	elif [ $STYXGROUP = "telesales" ]; then
 		echo "-> Starting up apps for group $STYXGROUP"
 		google-chrome &
 		echo "-> App startup complete!"
-	elif [ $STYXGROUP = "504" ]; then
-		echo "-> Starting up apps for group $STYXGROUP"
-		google-chrome &
-		echo "-> App startup complete!"
-	elif [ $STYXGROUP = "505" ]; then
+	elif [ $STYXGROUP = "solsidan" ]; then
 		echo "-> Starting up apps for group $STYXGROUP"
 		google-chrome &
 		echo "-> App startup complete!"
@@ -250,7 +295,100 @@ function 3sd_login {
 
 ########################## TASKRUNNER
 
+function tv_taskrunner {
+
+CHOICE=$(zenity --height=400 --width=360 --list \
+   --title="Telesales Taskrunner" \
+   --column="Task" --column="Description" \
+   "1" "Logout Session" \
+   "2" "Restart Bria" \
+   "3" "Restore Bria Settings" \
+   "4" "Refresh Logon Process" \
+   "5" "Kill Remote" \
+   "6" "Remote Legacy" \
+   "7" "Refresh Sound System" \
+   "8" "Download Remote Settings" \
+   "9" "Remote Temp" \
+   "10" "Headset Keepalive" \
+)
+
+if [[ $CHOICE = "1" ]]; then tvcc-3kundservice-logout &
+elif [[ $CHOICE = "2" ]]; then fixbria &
+elif [[ $CHOICE = "3" ]]; then restore_bria &
+elif [[ $CHOICE = "4" ]]; then tvcc-3kundservice-logon &
+elif [[ $CHOICE = "5" ]]; then killall rdesktop &
+elif [[ $CHOICE = "6" ]]; then /mnt/.system/kundservice/admin/server/./remote-legacy.sh &
+elif [[ $CHOICE = "7" ]]; then /mnt/.system/kundservice/admin/server/./fixpulse.sh &
+elif [[ $CHOICE = "8" ]]; then /mnt/.system/kundservice/admin/server/./remote-settings.sh &
+elif [[ $CHOICE = "9" ]]; then /mnt/.system/kundservice/admin/server/./remote-temp.sh &
+elif [[ $CHOICE = "10" ]]; then gnome-terminal -e 'tvcc-click'
+fi
+
+}
+
+function ks_taskrunner {
+
+CHOICE=$(zenity --height=400 --width=360 --list \
+   --title="Telesales Taskrunner" \
+   --column="Task" --column="Description" \
+   "1" "Logout Session" \
+   "2" "Restart Bria" \
+   "3" "Restore Bria Settings" \
+   "4" "Refresh Logon Process" \
+   "5" "Kill Remote" \
+   "6" "Remote Legacy" \
+   "7" "Refresh Sound System" \
+   "8" "Download Remote Settings" \
+   "9" "Remote Temp" \
+   "10" "Headset Keepalive" \
+)
+
+if [[ $CHOICE = "1" ]]; then tvcc-3kundservice-logout &
+elif [[ $CHOICE = "2" ]]; then fixbria &
+elif [[ $CHOICE = "3" ]]; then restore_bria &
+elif [[ $CHOICE = "4" ]]; then tvcc-3kundservice-logon &
+elif [[ $CHOICE = "5" ]]; then killall rdesktop &
+elif [[ $CHOICE = "6" ]]; then /mnt/.system/kundservice/admin/server/./remote-legacy.sh &
+elif [[ $CHOICE = "7" ]]; then /mnt/.system/kundservice/admin/server/./fixpulse.sh &
+elif [[ $CHOICE = "8" ]]; then /mnt/.system/kundservice/admin/server/./remote-settings.sh &
+elif [[ $CHOICE = "9" ]]; then /mnt/.system/kundservice/admin/server/./remote-temp.sh &
+elif [[ $CHOICE = "10" ]]; then gnome-terminal -e 'tvcc-click'
+fi
+
+}
+
 function ts_taskrunner {
+
+CHOICE=$(zenity --height=400 --width=360 --list \
+   --title="Telesales Taskrunner" \
+   --column="Task" --column="Description" \
+   "1" "Logout Session" \
+   "2" "Restart Bria" \
+   "3" "Restore Bria Settings" \
+   "4" "Refresh Logon Process" \
+   "5" "Kill Remote" \
+   "6" "Remote Legacy" \
+   "7" "Refresh Sound System" \
+   "8" "Download Remote Settings" \
+   "9" "Remote Temp" \
+   "10" "Headset Keepalive" \
+)
+
+if [[ $CHOICE = "1" ]]; then tvcc-3kundservice-logout &
+elif [[ $CHOICE = "2" ]]; then fixbria &
+elif [[ $CHOICE = "3" ]]; then restore_bria &
+elif [[ $CHOICE = "4" ]]; then tvcc-3kundservice-logon &
+elif [[ $CHOICE = "5" ]]; then killall rdesktop &
+elif [[ $CHOICE = "6" ]]; then /mnt/.system/kundservice/admin/server/./remote-legacy.sh &
+elif [[ $CHOICE = "7" ]]; then /mnt/.system/kundservice/admin/server/./fixpulse.sh &
+elif [[ $CHOICE = "8" ]]; then /mnt/.system/kundservice/admin/server/./remote-settings.sh &
+elif [[ $CHOICE = "9" ]]; then /mnt/.system/kundservice/admin/server/./remote-temp.sh &
+elif [[ $CHOICE = "10" ]]; then gnome-terminal -e 'tvcc-click'
+fi
+
+}
+
+function sd_taskrunner {
 
 CHOICE=$(zenity --height=400 --width=360 --list \
    --title="Telesales Taskrunner" \
