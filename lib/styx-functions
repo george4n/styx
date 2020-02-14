@@ -418,3 +418,9 @@ elif [[ $CHOICE = "10" ]]; then gnome-terminal -e 'tvcc-click'
 fi
 
 }
+
+
+function tv_exit {
+
+	
+}
